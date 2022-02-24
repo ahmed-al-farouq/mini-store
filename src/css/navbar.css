@@ -1,0 +1,286 @@
+header {
+  padding: 10px 0;
+  position: relative;
+}
+
+header .toggle-btn svg {
+  font-size: 30px;
+  color: #5ece7b;
+}
+
+header .menu-items {
+  gap: 32px;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  background: #fff;
+  z-index: 3000;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  text-align: center;
+  transition: 0.5s;
+}
+
+header .menu-items.open {
+  padding: 20px;
+  height: 170px;
+}
+
+header .menu-items li {
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+header .menu-items li:hover,
+header .menu-items li a.active {
+  color: #5ece7b;
+}
+
+header .menu-items li a.active {
+  font-weight: 600;
+}
+
+header .menu-items li a.active::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 2px;
+  background-color: #5ece7b;
+  margin: 0 auto;
+  position: relative;
+}
+
+header .logo {
+  width: 41px;
+  height: 41px;
+}
+
+header .right-part .currency-list {
+  margin-right: 20px;
+  position: relative;
+}
+
+header .right-part .currency-list span {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+header .right-part .currency-list ul {
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+  position: absolute;
+  top: 35px;
+  left: -23px;
+  width: 114px;
+  padding: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+header .right-part .currency-list:hover ul {
+  visibility: visible;
+  opacity: 1;
+}
+
+header .right-part .currency-list ul li {
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+header .right-part .currency-list svg {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+header .right-part .currency-list,
+header .right-part .cart-icon {
+  cursor: pointer;
+}
+
+header .right-part .cart-icon {
+  position: relative;
+}
+
+header .right-part .cart-icon .cart-items-num {
+  position: absolute;
+  top: -3px;
+  right: -6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 16px;
+  height: 17px;
+  width: 17px;
+  padding: 1px 4px;
+  background: #1d1f22;
+  color: #fff;
+  border-radius: 60px;
+}
+
+header .right-part .cart {
+  background: #fff;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  z-index: 200;
+  height: 0;
+  overflow: hidden;
+  transition: 0.8s;
+}
+
+header .right-part .cart.open {
+  padding: 8px 16px;
+  height: auto;
+}
+
+header .right-part .cart .cart-title {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  margin-bottom: 20px;
+}
+
+header .right-part .cart .cart-title span {
+  font-weight: 500;
+}
+
+header .right-part .cart .products {
+  padding-top: 0;
+}
+
+header .right-part .cart .products .product {
+  margin-bottom: 40px;
+}
+
+header .right-part .cart .products .product .product-name {
+  word-break: break-all;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 26px;
+}
+
+header .right-part .cart .products .product .price {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+header .right-part .cart .products .product .attributes {
+  gap: 8px;
+}
+
+header .right-part .cart .products .product .attributes li {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #1d1f22;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+header .right-part .cart .products .product .attributes li:last-child {
+  background: rgba(166, 166, 166, 0.2);
+  color: #a6a6a6;
+  border: 1px solid #a6a6a6;
+}
+
+header .right-part .cart .products .product .right-part {
+  margin-left: 10px;
+  gap: 10px;
+}
+
+header .right-part .cart .products .product .items-counter button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #1d1f22;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+header .right-part .cart .products .product .items-counter span {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+header .right-part .cart .products .product img {
+  height: 137px;
+  width: 105px;
+}
+
+header .right-part .cart .total span:first-child {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+header .right-part .cart .total span:last-child {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: right;
+}
+
+header .right-part .cart .btns {
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+
+header .right-part .cart .btns .btn {
+  height: 43px;
+  width: 140px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+header .right-part .cart .btns .view-bag-btn {
+  background: #fff;
+  border: 1px solid #1d1f22;
+}
+
+header .right-part .cart .btns .check-out-btn {
+  background: #5ece7b;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  header .menu-items {
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  header .menu-items li a.active::after {
+    width: 120%;
+    margin: auto;
+    transform: translate(-4px, 20px);
+    padding: 0 16px;
+  }
+
+  header .toggle-btn {
+    display: none;
+  }
+
+  header .right-part .cart {
+    right: 55px;
+  }
+}
