@@ -1,0 +1,110 @@
+.products,
+.clothes,
+.tech {
+  position: relative;
+  padding-top: 80px;
+}
+
+.category-name {
+  font-weight: normal;
+  font-size: 42px;
+  line-height: 160%;
+  margin-bottom: 80px;
+  text-transform: capitalize;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 103px;
+}
+
+.cards .card:hover {
+  transition: 0.5s;
+  box-shadow: 0 4px 35px rgba(168, 172, 176, 0.19);
+}
+
+.cards .card .card-img {
+  position: relative;
+  height: 330px;
+  width: 324px;
+}
+
+.cards .card.out-of-stock {
+  color: #8d8f9a;
+}
+
+.cards .card .card-img .btn {
+  position: absolute;
+  right: 5px;
+  bottom: -40px;
+  z-index: 50;
+}
+
+.card.out-of-stock .card-img .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.cards .card h2,
+.cards .card .price {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  margin-top: 24px;
+}
+
+.cards .card .price {
+  font-weight: 500;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .cards .card .card-img {
+    height: 330px;
+    width: 354px;
+  }
+
+  .cards .card .card-img .btn {
+    right: 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .cards .card:hover .card-img button {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@media screen and (min-width: 1199px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
