@@ -1,3 +1,72 @@
-.App {
-  text-align: center;
+@import url("./css/navbar.css");
+@import url("./css/categories.css");
+@import url("./css/single-product.css");
+
+/* Start Loading */
+.loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading p {
+  font-size: 25px;
+  font-weight: 500;
+  animation: loading 1s ease-in-out 0s infinite alternate;
+}
+
+@keyframes loading {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Start Error */
+.error {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 5px;
+  padding: 20px;
+  background: #f1f0f0c7;
+  width: 240px;
+  height: 180px;
+}
+
+.error .card svg {
+  font-size: 45px;
+  color: #00000069;
+}
+
+.error p {
+  font-size: 22px;
+}
+
+@media screen and (min-width: 576px) {
+  .error .card {
+    width: 300px;
+    height: 200px;
+  }
 }
