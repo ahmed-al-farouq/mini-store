@@ -1,15 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import circleCart from '../img/circle-cart-icon.png';
+import { addItemToCart } from '../redux/actions';
 
 const Item = ({
+  id,
   img,
   name,
   price,
   priceCurrency,
   outOfStock,
 }) => {
+  const dispatch = useDispatch();
+
   if (outOfStock) {
     return (
       <div className="card out-of-stock">
@@ -18,7 +23,7 @@ const Item = ({
             <div className="overlay">out of stock</div>
             <img src={img} alt={name} className="responsive-img" />
           </NavLink>
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={() => dispatch(addItemToCart(id))}>
             <img src={circleCart} alt="add to card" />
           </button>
         </div>
@@ -37,7 +42,7 @@ const Item = ({
         <NavLink to="/single-product">
           <img src={img} alt={name} className="responsive-img" />
         </NavLink>
-        <button type="button" className="btn">
+        <button type="button" className="btn" onClick={() => dispatch(addItemToCart(id))}>
           <img src={circleCart} alt="add to card" />
         </button>
       </div>
@@ -51,6 +56,7 @@ const Item = ({
 };
 
 Item.propTypes = {
+  id: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

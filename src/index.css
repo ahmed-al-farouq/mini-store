@@ -38,6 +38,15 @@ a {
   z-index: 100;
 }
 
+.btn {
+  border: none;
+  outline: none;
+  background: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 /* Start utilities */
 .container {
   padding: 0 15px;
@@ -84,14 +93,6 @@ a {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.btn {
-  border: none;
-  outline: none;
-  background: inherit;
-  cursor: pointer;
-  font-family: inherit;
 }
 
 @media screen and (min-width: 768px) {

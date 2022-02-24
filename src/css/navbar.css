@@ -159,6 +159,8 @@ header .right-part .cart .products {
 
 header .right-part .cart .products .product {
   margin-bottom: 40px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 header .right-part .cart .products .product .product-name {
@@ -175,7 +177,7 @@ header .right-part .cart .products .product .price {
 }
 
 header .right-part .cart .products .product .attributes {
-  gap: 8px;
+  gap: 10px;
 }
 
 header .right-part .cart .products .product .attributes li {
@@ -252,6 +254,7 @@ header .right-part .cart .btns .btn {
 header .right-part .cart .btns .view-bag-btn {
   background: #fff;
   border: 1px solid #1d1f22;
+  margin-right: 10px;
 }
 
 header .right-part .cart .btns .check-out-btn {
