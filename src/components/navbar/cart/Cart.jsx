@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ItemsCounter from './ItemsCounter';
 
 const Cart = React.forwardRef((props, ref) => {
   const cartItems = useSelector((state) => state.cart);
@@ -42,11 +43,7 @@ const Cart = React.forwardRef((props, ref) => {
                         </ul>
                       </div>
                       <div className="right-part flex">
-                        <div className="items-counter flex flex-column justify-between align-center">
-                          <button type="button" className="btn">+</button>
-                          <span>{item.qty}</span>
-                          <button type="button" className="btn">-</button>
-                        </div>
+                        <ItemsCounter qty={item.qty} />
                         <img src={item.gallery[0]} alt="product" />
                       </div>
                     </li>

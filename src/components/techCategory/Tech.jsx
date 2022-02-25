@@ -20,7 +20,7 @@ const Tech = () => {
               img={product.gallery[0]}
               name={product.name}
               price={product.prices[0].amount}
-              priceCurrency={product.prices[0].currency.label}
+              priceCurrency={product.prices[0].currency.symbol}
               outOfStock={product.inStock}
             />
           ) : null))

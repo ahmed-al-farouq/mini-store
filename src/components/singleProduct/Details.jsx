@@ -1,33 +1,49 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItemToCart } from '../../redux/actions';
 
-const Details = () => (
-  <div className="details">
-    <h1 className="brand">Brand</h1>
-    <p className="name">name</p>
-    <div className="attributes">
-      <span>
-        Sizes:
-      </span>
-      <ul className="unstyled-list flex">
-        <li className="disabled">S</li>
-        <li className="selected">M</li>
-        <li>L</li>
-      </ul>
+const Details = () => {
+  const product = useSelector((state) => state.singleProduct);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="details">
+      <h1 className="brand">{product.brand}</h1>
+      <p className="name">{product.name}</p>
+      <div className="attributes">
+        {
+          product.attributes.map((attr) => (
+            <>
+              <span>
+                {attr.name}
+                {' :'}
+              </span>
+              <ul className="unstyled-list flex flex-wrap">
+                {
+                  attr.items.map((item) => (
+                    <li key={product.id + Math.random() * 10000}>{item.value}</li>
+                  ))
+                }
+              </ul>
+            </>
+          ))
+        }
+      </div>
+      <div className="price">
+        <span>Price:</span>
+        <span>{ product.prices[0].currency.symbol + product.prices[0].amount}</span>
+      </div>
+      <button
+        type="button"
+        className="btn btn-add-cart"
+        onClick={() => dispatch(addItemToCart(product.id))}
+      >
+        add to cart
+      </button>
+      <p className="desc" dangerouslySetInnerHTML={{ __html: product.description }} />
     </div>
-    <div className="price">
-      <span>Price:</span>
-      <span>$500</span>
-    </div>
-    <button type="button" className="btn btn-add-cart">
-      add to cart
-    </button>
-    <p className="desc">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Nostrum doloremque reprehenderit vel illum, sunt similique dicta.
-      Reprehenderit quaerat nihil et nostrum amet quidem, optio numquam excepturi,
-      quibusdam dolorem ad error?
-    </p>
-  </div>
-);
+  );
+};
 
 export default Details;

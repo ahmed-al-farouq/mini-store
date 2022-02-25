@@ -8,7 +8,7 @@ import MenuItems from './MenuItems';
 import CurrenciesMenu from './CurrenciesMenu';
 import CartItemsNum from './CartItemsNum';
 import ToggleIcon from './ToggleIcon';
-import Cart from './Cart';
+import Cart from './cart/Cart';
 
 const Navbar = () => {
   const menuRef = useRef();

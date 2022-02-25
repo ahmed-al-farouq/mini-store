@@ -6,6 +6,9 @@ import {
   FETCH_DATA_FAILURE,
   ADD_ITEM_TO_CART,
   REMOVE_FROM_CART,
+  FETCH_SINGLE_PRODUCT,
+  INCREASE_NUM_OF_ITEMS,
+  DECREASE_NUM_OF_ITEMS,
 } from './actionTypes';
 
 export const initState = {
@@ -13,9 +16,9 @@ export const initState = {
   products: [],
   categories: [],
   currencies: [],
+  singleProduct: [],
   error: null,
   numOfItems: 1,
-  id: '',
   cart: [],
 };
 
@@ -40,25 +43,43 @@ export const reducer = (state = initState, action) => {
         loading: false,
         error: action.payload,
       };
-    case ADD_ITEM_TO_CART:
-      // Greate Item data from products array
+    case FETCH_SINGLE_PRODUCT:
+      // Get item data from products array
       const item = state.products.find(
         (product) => product.id === action.payload,
       );
-        // Check if Item is in cart already
-      const inCart = state.cart.find((item) => item.id === action.payload);
+      return {
+        ...state,
+        singleProduct: item,
+      };
+    case ADD_ITEM_TO_CART:
+      const product = state.products.find(
+        (product) => product.id === action.payload,
+      );
+      // Check if product is in cart already
+      const inCart = state.cart.find((product) => product.id === action.payload);
       return {
         ...state,
         cart: inCart
-          ? state.cart.map((item) => (item.id === action.payload
-            ? { ...item, qty: item.qty + state.numOfItems }
-            : item))
-          : [...state.cart, { ...item, qty: state.numOfItems }],
+          ? state.cart.map((product) => (product.id === action.payload
+            ? { ...product, qty: product.qty + state.numOfItems }
+            : product))
+          : [...state.cart, { ...product, qty: state.numOfItems }],
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
+        cart: state.cart.filter((product) => product.id !== action.payload.id),
+      };
+    case INCREASE_NUM_OF_ITEMS:
+      return {
+        ...state,
+        numOfItems: action.payload,
+      };
+    case DECREASE_NUM_OF_ITEMS:
+      return {
+        ...state,
+        numOfItems: action.payload,
       };
     default:
       return state;
