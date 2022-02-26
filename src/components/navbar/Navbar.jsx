@@ -21,7 +21,15 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="content-overlay d-none" ref={overlayRef} />
+      <div
+        className="content-overlay d-none"
+        ref={overlayRef}
+        role="button"
+        label="overlay"
+        tabIndex={0}
+        onClick={toggleCart}
+        onKeyDown={toggleCart}
+      />
       <div className="container">
         <div className="flex align-center justify-between">
           <MenuItems ref={menuRef} />

@@ -10,6 +10,7 @@ const Cart = React.forwardRef((props, ref) => {
   cartItems.map((item) => prices.push(item.prices[0].amount));
   const cartItemsNumber = quantities.reduce((cv, acc) => cv + acc, 0);
   const total = prices.reduce((cv, acc) => cv + acc, 0);
+
   return (
     <div className="cart" ref={ref}>
       {
