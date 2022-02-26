@@ -4,9 +4,9 @@ import {
   FETCH_DATA_REQUEST,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAILURE,
+  FETCH_SINGLE_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_FROM_CART,
-  FETCH_SINGLE_PRODUCT,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
 } from './actionTypes';
@@ -53,17 +53,17 @@ export const reducer = (state = initState, action) => {
       };
     case ADD_ITEM_TO_CART:
       const product = state.products.find(
-        (product) => product.id === action.payload,
+        (product) => product.id === action.payload.id,
       );
       // Check if product is in cart already
-      const inCart = state.cart.find((product) => product.id === action.payload);
+      const inCart = state.cart.find((product) => product.id === action.payload.id);
       return {
         ...state,
         cart: inCart
-          ? state.cart.map((product) => (product.id === action.payload
-            ? { ...product, qty: product.qty + 1 }
+          ? state.cart.map((product) => (product.id === action.payload.id
+            ? { ...product, qty: product.qty + 1, selectedAttributes: action.payload.attributesValues }
             : product))
-          : [...state.cart, { ...product, qty: 1 }],
+          : [...state.cart, { ...product, qty: 1, selectedAttributes: action.payload.attributesValues }],
       };
     case REMOVE_FROM_CART:
       return {

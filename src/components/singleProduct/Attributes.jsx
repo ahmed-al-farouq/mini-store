@@ -1,8 +1,21 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
 
-const Attributes = () => {
+const Attributes = ({
+  attributesValues,
+}) => {
+  let attrs = attributesValues;
   const product = useSelector((state) => state.singleProduct);
+
+  const selectAttribute = (e, attrValue, attrName) => {
+    if (attrs.includes({ value: attrValue, name: attrName })) {
+      attrs = attrs.filter((attr) => attr.value !== attrValue);
+      return e.target.parentElement.classList.remove('selected');
+    }
+    attrs.push({ value: attrValue, name: attrName });
+    return e.target.parentElement.classList.add('selected');
+  };
 
   return (
     <>
@@ -22,6 +35,7 @@ const Attributes = () => {
                     <button
                       type="button"
                       className="btn"
+                      onClick={(e) => selectAttribute(e, item.value, attr.name)}
                     >
                       {item.value}
                     </button>
@@ -35,6 +49,14 @@ const Attributes = () => {
       }
     </>
   );
+};
+
+Attributes.propTypes = {
+  attributesValues: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.string,
+  ])).isRequired,
 };
 
 export default Attributes;

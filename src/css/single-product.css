@@ -65,10 +65,15 @@
   padding: 5px;
 }
 
-.single-product .details .attributes ul li:hover,
-.single-product .details .attributes ul li.selected {
-  background-color: #1d1f22;
+.single-product .details .attributes ul li:hover {
+  background-color: #1d1f226b;
   color: #fff;
+}
+
+.single-product .details .attributes ul li.selected {
+  background-color: #5ece7b;
+  color: #fff;
+  border: none;
 }
 
 .single-product .details .attributes ul li.disabled {

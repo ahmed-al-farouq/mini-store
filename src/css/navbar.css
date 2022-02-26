@@ -190,12 +190,6 @@ header .right-part .cart .products .product .attributes li {
   text-transform: uppercase;
 }
 
-header .right-part .cart .products .product .attributes li:last-child {
-  background: rgba(166, 166, 166, 0.2);
-  color: #a6a6a6;
-  border: 1px solid #a6a6a6;
-}
-
 header .right-part .cart .products .product .right-part {
   margin-left: 10px;
   gap: 10px;

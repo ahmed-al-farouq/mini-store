@@ -5,6 +5,7 @@ import { addItemToCart } from '../../redux/actions';
 import Attributes from './Attributes';
 
 const Details = () => {
+  const attributesValues = [];
   const product = useSelector((state) => state.singleProduct);
   const dispatch = useDispatch();
 
@@ -13,7 +14,7 @@ const Details = () => {
       <h1 className="brand">{product.brand}</h1>
       <p className="name">{product.name}</p>
       <div className="attributes">
-        <Attributes />
+        <Attributes attributesValues={attributesValues} />
       </div>
       <div className="price">
         <span>Price:</span>
@@ -22,7 +23,7 @@ const Details = () => {
       <button
         type="button"
         className="btn btn-add-cart"
-        onClick={() => dispatch(addItemToCart(product.id))}
+        onClick={() => dispatch(addItemToCart(product.id, attributesValues))}
       >
         add to cart
       </button>

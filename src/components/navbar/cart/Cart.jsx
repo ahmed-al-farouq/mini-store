@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import CartAttributes from './CartAttributes';
 import ItemsCounter from './ItemsCounter';
 
 const Cart = React.forwardRef((props, ref) => {
@@ -38,10 +39,7 @@ const Cart = React.forwardRef((props, ref) => {
                           {item.prices[0].currency.symbol}
                           {item.prices[0].amount}
                         </span>
-                        <ul className="attributes unstyled-list flex">
-                          <li>{item.attributes.length && item.attributes[0].items[0].value}</li>
-                          <li>m</li>
-                        </ul>
+                        <CartAttributes item={item} />
                       </div>
                       <div className="right-part flex">
                         <ItemsCounter id={item.id} qty={item.qty} />

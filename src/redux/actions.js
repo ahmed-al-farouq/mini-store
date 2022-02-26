@@ -32,15 +32,18 @@ export const fetchSingleProduct = (id) => ({
   payload: id,
 });
 
-export const addItemToCart = (productId) => ({
+export const addItemToCart = (productId, attributesValues) => ({
   type: ADD_ITEM_TO_CART,
-  payload: productId,
+  payload: {
+    id: productId,
+    attributesValues,
+  },
 });
 
-export const removeFromCart = (itemID) => ({
+export const removeFromCart = (productId) => ({
   type: REMOVE_FROM_CART,
   payload: {
-    id: itemID,
+    id: productId,
   },
 });
 
