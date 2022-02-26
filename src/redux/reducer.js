@@ -7,8 +7,8 @@ import {
   ADD_ITEM_TO_CART,
   REMOVE_FROM_CART,
   FETCH_SINGLE_PRODUCT,
-  INCREASE_NUM_OF_ITEMS,
-  DECREASE_NUM_OF_ITEMS,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from './actionTypes';
 
 export const initState = {
@@ -18,7 +18,6 @@ export const initState = {
   currencies: [],
   singleProduct: [],
   error: null,
-  numOfItems: 1,
   cart: [],
 };
 
@@ -62,24 +61,30 @@ export const reducer = (state = initState, action) => {
         ...state,
         cart: inCart
           ? state.cart.map((product) => (product.id === action.payload
-            ? { ...product, qty: product.qty + state.numOfItems }
+            ? { ...product, qty: product.qty + 1 }
             : product))
-          : [...state.cart, { ...product, qty: state.numOfItems }],
+          : [...state.cart, { ...product, qty: 1 }],
       };
     case REMOVE_FROM_CART:
       return {
         ...state,
         cart: state.cart.filter((product) => product.id !== action.payload.id),
       };
-    case INCREASE_NUM_OF_ITEMS:
+    case INCREASE_QUANTITY:
       return {
         ...state,
-        numOfItems: action.payload,
+        cart: state.cart.map((product) => (product.id === action.payload.id
+          ? { ...product, qty: action.payload.qty }
+          : product)),
       };
-    case DECREASE_NUM_OF_ITEMS:
+    case DECREASE_QUANTITY:
       return {
         ...state,
-        numOfItems: action.payload,
+        cart: action.payload.qty === 0
+          ? state.cart.filter((product) => product.id !== action.payload.id)
+          : state.cart.map((product) => (product.id === action.payload.id
+            ? { ...product, qty: action.payload.qty }
+            : product)),
       };
     default:
       return state;

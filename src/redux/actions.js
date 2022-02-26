@@ -5,8 +5,8 @@ import {
   FETCH_SINGLE_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_FROM_CART,
-  INCREASE_NUM_OF_ITEMS,
-  DECREASE_NUM_OF_ITEMS,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from './actionTypes';
 
 export const fetchDataRequest = () => ({
@@ -44,18 +44,18 @@ export const removeFromCart = (itemID) => ({
   },
 });
 
-export const increaseNumOfItems = (id, numOfItems) => ({
-  type: INCREASE_NUM_OF_ITEMS,
+export const increaseQuantity = (id, qty) => ({
+  type: INCREASE_QUANTITY,
   payload: {
     id,
-    qty: numOfItems + 1,
+    qty: qty + 1,
   },
 });
 
-export const decreaseNumOfItems = (id, numOfItems) => ({
-  type: DECREASE_NUM_OF_ITEMS,
+export const decreaseQuantity = (id, qty) => ({
+  type: DECREASE_QUANTITY,
   payload: {
     id,
-    qty: numOfItems - 1,
+    qty: qty - 1,
   },
 });

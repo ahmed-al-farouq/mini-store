@@ -181,8 +181,7 @@ header .right-part .cart .products .product .attributes {
 }
 
 header .right-part .cart .products .product .attributes li {
-  width: 24px;
-  height: 24px;
+  padding: 5px 10px;
   border: 1px solid #1d1f22;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;

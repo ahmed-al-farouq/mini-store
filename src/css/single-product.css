@@ -52,7 +52,6 @@
 }
 
 .single-product .details .attributes ul li {
-  padding: 5px;
   border: 1px solid #1d1f22;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
@@ -60,6 +59,10 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: 0.5s;
+}
+
+.single-product .details .attributes ul li .btn {
+  padding: 5px;
 }
 
 .single-product .details .attributes ul li:hover,

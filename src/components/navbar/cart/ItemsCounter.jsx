@@ -1,16 +1,16 @@
 import React from 'react';
 import ProptTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { increaseNumOfItems, decreaseNumOfItems } from '../../../redux/actions';
+import { increaseQuantity, decreaseQuantity } from '../../../redux/actions';
 
-const ItemsCounter = ({ qty }) => {
+const ItemsCounter = ({ id, qty }) => {
   const dispatch = useDispatch();
   return (
     <div className="items-counter flex flex-column justify-between align-center">
       <button
         type="button"
         className="btn"
-        onClick={() => dispatch(increaseNumOfItems(qty))}
+        onClick={() => dispatch(increaseQuantity(id, qty))}
       >
         +
       </button>
@@ -18,7 +18,7 @@ const ItemsCounter = ({ qty }) => {
       <button
         type="button"
         className="btn"
-        onClick={() => dispatch(decreaseNumOfItems(qty))}
+        onClick={() => dispatch(decreaseQuantity(id, qty))}
       >
         -
       </button>
@@ -27,6 +27,7 @@ const ItemsCounter = ({ qty }) => {
 };
 
 ItemsCounter.propTypes = {
+  id: ProptTypes.string.isRequired,
   qty: ProptTypes.number.isRequired,
 };
 
