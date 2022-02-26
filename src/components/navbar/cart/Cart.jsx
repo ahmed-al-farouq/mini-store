@@ -7,7 +7,7 @@ const Cart = React.forwardRef((props, ref) => {
   const quantities = [];
   const prices = [];
   cartItems.map((item) => quantities.push(item.qty));
-  cartItems.map((item) => prices.push(item.prices[0].amount));
+  cartItems.map((item) => prices.push(item.prices[0].amount * item.qty));
   const cartItemsNumber = quantities.reduce((cv, acc) => cv + acc, 0);
   const total = prices.reduce((cv, acc) => cv + acc, 0);
 
@@ -57,7 +57,7 @@ const Cart = React.forwardRef((props, ref) => {
                 </span>
                 <span>
                   $
-                  {total}
+                  {total.toFixed(2)}
                 </span>
               </div>
               <div className="btns flex justify-evenly">
