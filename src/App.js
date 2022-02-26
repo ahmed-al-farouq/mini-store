@@ -17,6 +17,7 @@ import Tech from './components/techCategory/Tech';
 import SingleProduct from './components/singleProduct/SingleProduct';
 import Loading from './components/Loading';
 import Error from './components/Error';
+import CartPage from './components/cartPage/CartPage';
 
 export const CategoriesContext = React.createContext();
 export const CurrenciesContext = React.createContext();
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/clothes" element={<Clothes />} />
         <Route path="/tech" element={<Tech />} />
         <Route path="/single-product" element={<SingleProduct />} />
+        <Route path="/cart-page" element={<CartPage />} />
       </Routes>
     </Router>
   );
