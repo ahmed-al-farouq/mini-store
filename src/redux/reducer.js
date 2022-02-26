@@ -9,16 +9,18 @@ import {
   REMOVE_FROM_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  CHANGE_CURRENCY,
 } from './actionTypes';
 
 export const initState = {
+  error: null,
   loading: true,
   products: [],
   categories: [],
   currencies: [],
   singleProduct: [],
-  error: null,
   cart: [],
+  currentCurrency: '$',
 };
 
 export const reducer = (state = initState, action) => {
@@ -85,6 +87,11 @@ export const reducer = (state = initState, action) => {
           : state.cart.map((product) => (product.id === action.payload.id
             ? { ...product, qty: action.payload.qty }
             : product)),
+      };
+    case CHANGE_CURRENCY:
+      return {
+        ...state,
+        currentCurrency: action.payload,
       };
     default:
       return state;

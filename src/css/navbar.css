@@ -89,11 +89,13 @@ header .right-part .currency-list:hover ul {
   opacity: 1;
 }
 
-header .right-part .currency-list ul li {
+header .right-part .currency-list ul li .btn {
   padding: 10px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
+  width: 100%;
+  text-align: left;
 }
 
 header .right-part .currency-list svg {

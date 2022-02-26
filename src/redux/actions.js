@@ -7,6 +7,7 @@ import {
   REMOVE_FROM_CART,
   INCREASE_QUANTITY,
   DECREASE_QUANTITY,
+  CHANGE_CURRENCY,
 } from './actionTypes';
 
 export const fetchDataRequest = () => ({
@@ -61,4 +62,9 @@ export const decreaseQuantity = (id, qty) => ({
     id,
     qty: qty - 1,
   },
+});
+
+export const changeCurrency = (currency) => ({
+  type: CHANGE_CURRENCY,
+  payload: currency,
 });

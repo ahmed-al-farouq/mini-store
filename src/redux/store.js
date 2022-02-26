@@ -12,7 +12,7 @@ import { client } from '../App';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['id', 'cartItems'],
+  blacklist: ['id', 'cartItems', 'error', 'loading'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);

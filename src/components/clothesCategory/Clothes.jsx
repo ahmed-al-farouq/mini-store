@@ -5,6 +5,8 @@ import Item from '../Item';
 const Clothes = () => {
   const categories = useSelector((state) => state.categories);
   const products = useSelector((state) => state.products);
+  const currentCurrency = useSelector((state) => state.currentCurrency);
+  const getCurrency = (prices) => prices.find((price) => price.currency.symbol === currentCurrency);
 
   return (
     <section className="clothes">
@@ -20,8 +22,8 @@ const Clothes = () => {
               id={product.id}
               img={product.gallery[0]}
               name={product.name}
-              price={product.prices[0].amount}
-              priceCurrency={product.prices[0].currency.symbol}
+              price={getCurrency(product.prices).amount}
+              priceCurrency={getCurrency(product.prices).currency.symbol}
               outOfStock={product.inStock}
             />
           ) : null))

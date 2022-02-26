@@ -8,6 +8,8 @@ const Details = () => {
   const attributesValues = [];
   const product = useSelector((state) => state.singleProduct);
   const dispatch = useDispatch();
+  const currentCurrency = useSelector((state) => state.currentCurrency);
+  const getCurrency = (prices) => prices.find((price) => price.currency.symbol === currentCurrency);
 
   return (
     <div className="details">
@@ -18,7 +20,11 @@ const Details = () => {
       </div>
       <div className="price">
         <span>Price:</span>
-        <span>{ product.prices[0].currency.symbol + product.prices[0].amount }</span>
+        <span>
+          {
+            getCurrency(product.prices).currency.symbol + getCurrency(product.prices).amount
+          }
+        </span>
       </div>
       <button
         type="button"

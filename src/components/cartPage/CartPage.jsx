@@ -5,6 +5,9 @@ import ItemsCounter from '../navbar/cart/ItemsCounter';
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart);
+  const currentCurrency = useSelector((state) => state.currentCurrency);
+  const getCurrency = (prices) => prices.find((price) => price.currency.symbol === currentCurrency);
+
   return (
     <section className="cart-page">
       <div className="container">
@@ -27,8 +30,10 @@ const CartPage = () => {
                             {item.name}
                           </h4>
                           <span className="price">
-                            {item.prices[0].currency.symbol}
-                            {item.prices[0].amount}
+                            price=
+                            {getCurrency(item.prices).amount}
+                            priceCurrency=
+                            {getCurrency(item.prices).currency.symbol}
                           </span>
                           <CartAttributes item={item} />
                         </div>

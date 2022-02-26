@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import logo from '../../img/logo.png';
@@ -18,6 +19,7 @@ const Navbar = () => {
     cartRef.current.classList.toggle('open');
     overlayRef.current.classList.toggle('d-none');
   };
+  const currentCurrency = useSelector((state) => state.currentCurrency);
 
   return (
     <header>
@@ -41,7 +43,7 @@ const Navbar = () => {
           <div className="right-part flex">
             <div className="currency-list">
               <span>
-                $
+                {currentCurrency}
                 <FontAwesomeIcon icon={faAngleDown} />
               </span>
               <CurrenciesMenu />

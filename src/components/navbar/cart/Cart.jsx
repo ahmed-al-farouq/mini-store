@@ -12,6 +12,8 @@ const Cart = React.forwardRef((props, ref) => {
   cartItems.map((item) => prices.push(item.prices[0].amount * item.qty));
   const cartItemsNumber = quantities.reduce((cv, acc) => cv + acc, 0);
   const total = prices.reduce((cv, acc) => cv + acc, 0);
+  const currentCurrency = useSelector((state) => state.currentCurrency);
+  const getCurrency = (prices) => prices.find((price) => price.currency.symbol === currentCurrency);
 
   return (
     <div className="cart" ref={ref}>
@@ -37,8 +39,8 @@ const Cart = React.forwardRef((props, ref) => {
                           {item.name}
                         </h3>
                         <span className="price">
-                          {item.prices[0].currency.symbol}
-                          {item.prices[0].amount}
+                          {getCurrency(item.prices).currency.symbol}
+                          {getCurrency(item.prices).amount}
                         </span>
                         <CartAttributes item={item} />
                       </div>
@@ -55,7 +57,7 @@ const Cart = React.forwardRef((props, ref) => {
                   Total
                 </span>
                 <span>
-                  $
+                  {currentCurrency}
                   {total.toFixed(2)}
                 </span>
               </div>
