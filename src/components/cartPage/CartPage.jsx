@@ -30,10 +30,8 @@ const CartPage = () => {
                             {item.name}
                           </h4>
                           <span className="price">
-                            price=
-                            {getCurrency(item.prices).amount}
-                            priceCurrency=
                             {getCurrency(item.prices).currency.symbol}
+                            {getCurrency(item.prices).amount}
                           </span>
                           <CartAttributes item={item} />
                         </div>
