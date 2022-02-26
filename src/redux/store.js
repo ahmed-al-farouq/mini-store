@@ -3,11 +3,22 @@ import {
   gql,
 } from '@apollo/client';
 import thunkMiddleware from 'redux-thunk';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import { reducer } from './reducer';
 import { fetchDataFailure, fetchDataRequest, fetchDataSuccess } from './actions';
 import { client } from '../App';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['id', 'cartItems'],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const store = createStore(persistedReducer, applyMiddleware(thunkMiddleware));
+export const persistor = persistStore(store);
 
 const fetchData = () => (dispatch) => {
   dispatch(fetchDataRequest());
