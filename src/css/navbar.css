@@ -278,6 +278,11 @@ header .right-part .cart .btns .check-out-btn {
     overflow: visible;
   }
 
+  header .menu-items.open {
+    padding: 0;
+    height: auto;
+  }
+
   header .menu-items li a.active::after {
     width: 120%;
     margin: auto;
