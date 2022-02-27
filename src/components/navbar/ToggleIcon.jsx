@@ -6,17 +6,27 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 
+let menu;
+let openIcon;
+let closeIcon;
+export const toggleMenu = () => {
+  menu.current.classList.toggle('open');
+  openIcon.current.classList.toggle('d-none');
+  closeIcon.current.classList.toggle('d-none');
+};
+
 const ToggleIcon = ({ menuRef }) => {
   const openIconRef = useRef();
   const closeIconRef = useRef();
-  const toggleMenu = () => {
-    menuRef.current.classList.toggle('open');
-    openIconRef.current.classList.toggle('d-none');
-    closeIconRef.current.classList.toggle('d-none');
-  };
-
+  menu = menuRef;
+  openIcon = openIconRef;
+  closeIcon = closeIconRef;
   return (
-    <button type="button" onClick={toggleMenu} className="btn toggle-btn">
+    <button
+      type="button"
+      onClick={toggleMenu}
+      className="btn toggle-btn"
+    >
       <span ref={openIconRef}>
         <FontAwesomeIcon icon={faBars} />
       </span>

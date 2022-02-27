@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { toggleMenu } from './ToggleIcon';
 
 const MenuItems = React.forwardRef((props, ref) => {
   const categories = useSelector((state) => state.categories);
@@ -15,6 +16,7 @@ const MenuItems = React.forwardRef((props, ref) => {
                 <NavLink
                   to="/"
                   activeclassname="active"
+                  onClick={toggleMenu}
                 >
                   {cat.name}
                 </NavLink>
@@ -26,6 +28,7 @@ const MenuItems = React.forwardRef((props, ref) => {
               <NavLink
                 to={cat.name}
                 activeclassname="active"
+                onClick={toggleMenu}
               >
                 {cat.name}
               </NavLink>
