@@ -227,14 +227,14 @@ header .right-part .cart .products .product img {
   width: 105px;
 }
 
-header .right-part .cart .total span:first-child {
+header .right-part .cart .products .product .total span:first-child {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 18px;
 }
 
-header .right-part .cart .total span:last-child {
+header .right-part .cart .products .product .total span:last-child {
   font-size: 16px;
   font-weight: 700;
   line-height: 26px;
