@@ -52,7 +52,7 @@ const Navbar = () => {
               <img src={cart} alt="cart" />
               <CartItemsNum />
             </button>
-            <Cart ref={cartRef} />
+            <Cart ref={cartRef} toggleCart={toggleCart} />
           </div>
           <ToggleIcon menuRef={menuRef} />
         </div>

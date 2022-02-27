@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CartAttributes from './CartAttributes';
@@ -64,7 +65,11 @@ const Cart = React.forwardRef((props, ref) => {
                 </span>
               </div>
               <div className="btns flex justify-evenly">
-                <NavLink to="/cart-page" className="btn view-bag-btn">
+                <NavLink
+                  to="/cart-page"
+                  className="btn view-bag-btn"
+                  onClick={props.toggleCart}
+                >
                   View bag
                 </NavLink>
                 <button type="button" className="btn check-out-btn">
@@ -86,4 +91,8 @@ const Cart = React.forwardRef((props, ref) => {
 });
 
 Cart.displayName = 'Cart';
+Cart.propTypes = {
+  toggleCart: PropTypes.func.isRequired,
+};
+
 export default Cart;
