@@ -6,6 +6,7 @@ import Attributes from './Attributes';
 
 const Details = () => {
   const attributesValues = [];
+  const attributesNames = [];
   const product = useSelector((state) => state.singleProduct);
   const dispatch = useDispatch();
   const currentCurrency = useSelector((state) => state.currentCurrency);
@@ -16,7 +17,7 @@ const Details = () => {
       <h1 className="brand">{product.brand}</h1>
       <p className="name">{product.name}</p>
       <div className="attributes">
-        <Attributes attributesValues={attributesValues} />
+        <Attributes attributesValues={attributesValues} attributesNames={attributesNames} />
       </div>
       <div className="price">
         <span>Price:</span>
@@ -29,7 +30,10 @@ const Details = () => {
       <button
         type="button"
         className="btn btn-add-cart"
-        onClick={() => dispatch(addItemToCart(product.id, attributesValues))}
+        onClick={() => dispatch(addItemToCart(
+          product.id,
+          [...attributesValues, ...attributesNames],
+        ))}
       >
         add to cart
       </button>

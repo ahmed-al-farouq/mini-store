@@ -33,7 +33,9 @@ const CartPage = () => {
                             {getCurrency(item.prices).currency.symbol}
                             {getCurrency(item.prices).amount}
                           </span>
-                          <CartAttributes item={item} />
+                          <div className="attributes">
+                            <CartAttributes item={item} />
+                          </div>
                         </div>
                         <div className="right-part flex">
                           <ItemsCounter id={item.id} qty={item.qty} />

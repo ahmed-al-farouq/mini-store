@@ -4,16 +4,20 @@ import { useSelector } from 'react-redux';
 
 const Attributes = ({
   attributesValues,
+  attributesNames,
 }) => {
   let attrs = attributesValues;
+  let names = attributesNames;
   const product = useSelector((state) => state.singleProduct);
 
   const selectAttribute = (e, attrValue, attrName) => {
-    if (attrs.includes({ value: attrValue, name: attrName })) {
-      attrs = attrs.filter((attr) => attr.value !== attrValue);
+    if (attrs.includes(attrValue)) {
+      attrs = attrs.filter((attr) => attr !== attrValue);
+      names = names.filter((name) => name !== attrName);
       return e.target.parentElement.classList.remove('selected');
     }
-    attrs.push({ value: attrValue, name: attrName });
+    names.push(attrName);
+    attrs.push(attrValue);
     return e.target.parentElement.classList.add('selected');
   };
 
@@ -52,6 +56,11 @@ const Attributes = ({
 };
 
 Attributes.propTypes = {
+  attributesNames: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.string,
+  ])).isRequired,
   attributesValues: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.object,

@@ -2,17 +2,33 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 const CartAttributes = ({ item }) => (
-  <ul className="attributes unstyled-list flex">
+  <>
     {
-      (item.selectedAttributes && item.selectedAttributes.length)
-        ? item.selectedAttributes.map((attr) => (
-          <li key={attr.value}>
-            {attr.value}
-          </li>
-        ))
-        : null
-    }
-  </ul>
+        (item.selectedAttributes && item.selectedAttributes.length)
+          ? item.attributes.map((attr) => (item.selectedAttributes.includes(attr.name) ? (
+          // Display only if attributes name exist
+            <>
+              <span>
+                {attr.name}
+                :
+              </span>
+              <ul className="unstyled-list flex">
+                {
+                  // Display only selected attributes
+                  attr.items.map((attr) => (item.selectedAttributes.includes(attr.value)
+                    ? (
+                      <li className="selected" key={`${attr.value}=${Math.random()}`}>
+                        {attr.value}
+                      </li>
+                    )
+                    : null))
+                }
+              </ul>
+            </>
+          ) : null))
+          : null
+      }
+  </>
 );
 
 CartAttributes.propTypes = {
